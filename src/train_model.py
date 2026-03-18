@@ -19,7 +19,8 @@ PREPARED_TEST_PATTERN = PREPARED_DIR / "test_batch_*.parquet"
 MODEL_DIR = Path("../models")
 EVAL_RESULTS_PATH = RESULTS_DIR / "results_catboost_eval_data.json"
 TEST_RESULTS_PATH = RESULTS_DIR / "results_catboost_test_data.json"
-FORECAST_PATH = DATASET_DIR / "forecast_CatBoost_v1.parquet"
+FORECAST_EVAL_PATH = DATASET_DIR / "forecast_CatBoost_v1_eval.parquet"
+FORECAST_TEST_PATH = DATASET_DIR / "forecast_CatBoost_v1_test.parquet"
 TEST_PATH = DATASET_DIR / "test.csv"
 DATE_FROM = "2017-01-01"
 SUBMISSION_PATH = DATASET_DIR / "submission_CatBoost_v1.csv"
@@ -188,14 +189,14 @@ def run_eval():
     forecast_df = Xtest[["series_id", "date"]].copy()
     forecast_df["pred_log1p"] = pred_log
     forecast_df["pred"] = pred_lin
-    forecast_df.to_parquet(FORECAST_PATH, compression="zstd", index=False)
-    print(f"Forecast saved to {FORECAST_PATH}")
+    forecast_df.to_parquet(FORECAST_EVAL_PATH, compression="zstd", index=False)
+    print(f"Forecast saved to {FORECAST_EVAL_PATH}")
 
     results = {
         "nwrmsle": nwrmsle,
         "best_params": best_params,
         "model_path": str(MODEL_PATH),
-        "forecast_path": str(FORECAST_PATH),
+        "forecast_path": str(FORECAST_EVAL_PATH),
     }
     with open(EVAL_RESULTS_PATH, "w") as f:
         json.dump(results, f, indent=2)
@@ -232,9 +233,9 @@ def run_test():
 
     # Save parquet forecast (internal)
     forecast_df[["series_id", "date", "pred_log1p", "pred"]].to_parquet(
-        FORECAST_PATH, compression="zstd", index=False
+        FORECAST_TEST_PATH, compression="zstd", index=False
     )
-    print(f"Forecast saved to {FORECAST_PATH}")
+    print(f"Forecast saved to {FORECAST_TEST_PATH}")
 
     # Match each prediction to id from test.csv, save submission (id, unit_sales)
     if not TEST_PATH.exists():
@@ -261,7 +262,7 @@ def run_test():
 
     results = {
         "mode": "test",
-        "forecast_path": str(FORECAST_PATH),
+        "forecast_path": str(FORECAST_TEST_PATH),
         "submission_path": str(SUBMISSION_PATH),
         "n_test_rows": len(test_df),
     }
