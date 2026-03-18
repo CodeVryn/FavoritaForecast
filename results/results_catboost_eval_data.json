@@ -1,11 +1,11 @@
 {
-  "nwrmsle": 0.6418190323772572,
+  "nwrmsle": 0.6442250985460275,
   "best_params": {
     "depth": 6,
     "learning_rate": 0.1,
     "n_estimators": 800,
     "subsample": 0.8
   },
-  "model_path": "models/catboost_favorita.cbm",
-  "forecast_path": "dataset/forecast_CatBoost_v1_eval.parquet"
+  "model_path": "/home/fiberfox/Projects/FavoritaForecast/models/catboost_favorita.cbm",
+  "forecast_path": "/home/fiberfox/Projects/FavoritaForecast/dataset/forecast_CatBoost_v1_eval.parquet"
 }

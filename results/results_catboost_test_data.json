@@ -1,6 +1,6 @@
 {
   "mode": "test",
-  "forecast_path": "dataset/forecast_CatBoost_v1_test.parquet",
-  "submission_path": "results/submission_CatBoost_v1.csv",
+  "forecast_path": "/home/fiberfox/Projects/FavoritaForecast/dataset/forecast_CatBoost_v1_test.parquet",
+  "submission_path": "/home/fiberfox/Projects/FavoritaForecast/dataset/submission_CatBoost_v1.csv",
   "n_test_rows": 3503392
 }
