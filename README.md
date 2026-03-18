@@ -7,7 +7,7 @@
 Решение оценивается по NWRMSLE (Normalized Weighted Root Mean Squared Logarithmic Error):
 
 $$
-NWRMSLE = \sqrt{ \frac{\sum_{i=1}^n w_i \left( \ln(\hat{y}i + 1) - \ln(y_i +1)  \right)^2  }{\sum{i=1}^n w_i}}
+NWRMSLE = \sqrt{ \frac{\sum_{i=1}^n w_i \left( \ln(\hat{y}_i + 1) - \ln(y_i +1)  \right)^2  }{\sum{i=1}^n w_i}}
 $$
 
 Где:
