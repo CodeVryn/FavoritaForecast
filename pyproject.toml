@@ -45,6 +45,7 @@ dependencies = [
     "jsonschema-specifications==2025.9.1",
     "jupyter-client==8.8.0",
     "jupyter-core==5.9.1",
+    "kaggle>=2.0.0",
     "kagglehub==1.0.0",
     "kagglesdk==0.1.16",
     "kiwisolver==1.5.0",
