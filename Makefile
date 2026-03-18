@@ -1,6 +1,6 @@
 .PHONY: run-all download-dataset generate-features train-model run-model-on-test-data tensorboard-logs
 
-run-all: download-dataset generate-features train-model run-model-on-test-data
+run-all: download-dataset generate-features train-model run-model-on-test-data tensorboard-logs
 
 download-dataset:
 	uv sync
