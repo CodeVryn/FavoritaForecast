@@ -11,12 +11,12 @@ from catboost import CatBoostRegressor, Pool
 import polars as pl
 
 # --- Constants ---
-DATASET_DIR = Path("data")
-RESULTS_DIR = Path("results")
+DATASET_DIR = Path("../dataset")
+RESULTS_DIR = Path("../results")
 PREPARED_DIR = DATASET_DIR / "prepared"
 PREPARED_TRAIN_PATTERN = PREPARED_DIR / "train_batch_*.parquet"
 PREPARED_TEST_PATTERN = PREPARED_DIR / "test_batch_*.parquet"
-MODEL_DIR = Path("models")
+MODEL_DIR = Path("../models")
 EVAL_RESULTS_PATH = RESULTS_DIR / "results_catboost_eval_data.json"
 TEST_RESULTS_PATH = RESULTS_DIR / "results_catboost_test_data.json"
 FORECAST_PATH = DATASET_DIR / "forecast_CatBoost_v1.parquet"
