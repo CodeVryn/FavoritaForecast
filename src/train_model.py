@@ -11,17 +11,19 @@ from catboost import CatBoostRegressor, Pool
 import polars as pl
 
 # --- Constants ---
-DATA_DIR = Path("data")
-PREPARED_DIR = DATA_DIR / "prepared"
+DATASET_DIR = Path("data")
+RESULTS_DIR = Path("results")
+PREPARED_DIR = DATASET_DIR / "prepared"
 PREPARED_TRAIN_PATTERN = PREPARED_DIR / "train_batch_*.parquet"
 PREPARED_TEST_PATTERN = PREPARED_DIR / "test_batch_*.parquet"
 MODEL_DIR = Path("models")
-RESULTS_PATH = Path("results_catboost_test_data.json")
-FORECAST_PATH = DATA_DIR / "forecast_CatBoost_v1.parquet"
-TEST_PATH = DATA_DIR / "test.csv"
+EVAL_RESULTS_PATH = RESULTS_DIR / "results_catboost_eval_data.json"
+TEST_RESULTS_PATH = RESULTS_DIR / "results_catboost_test_data.json"
+FORECAST_PATH = DATASET_DIR / "forecast_CatBoost_v1.parquet"
+TEST_PATH = DATASET_DIR / "test.csv"
 DATE_FROM = "2017-01-01"
-SUBMISSION_PATH = DATA_DIR / "submission_CatBoost_v1.csv"
-TRAIN_DIR = Path("catboost_tb_logs")
+SUBMISSION_PATH = RESULTS_DIR / "submission_CatBoost_v1.csv"
+TRAIN_DIR = Path("tensorboard_logs")
 
 HORIZON = 16
 RANDOM_SEED = 42
@@ -195,9 +197,9 @@ def run_eval():
         "model_path": str(MODEL_PATH),
         "forecast_path": str(FORECAST_PATH),
     }
-    with open(RESULTS_PATH, "w") as f:
+    with open(EVAL_RESULTS_PATH, "w") as f:
         json.dump(results, f, indent=2)
-    print(f"Results saved to {RESULTS_PATH}")
+    print(f"Results saved to {EVAL_RESULTS_PATH}")
 
 
 def run_test():
@@ -264,9 +266,9 @@ def run_test():
         "n_test_rows": len(test_df),
     }
 
-    with open(RESULTS_PATH, "w") as f:
+    with open(TEST_RESULTS_PATH, "w") as f:
         json.dump(results, f, indent=2)
-    print(f"Results saved to {RESULTS_PATH}")
+    print(f"Results saved to {TEST_RESULTS_PATH}")
 
 
 def main():

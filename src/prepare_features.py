@@ -7,14 +7,14 @@ import pandas as pd
 import polars as pl
 
 # --- Constants ---
-DATA_DIR = Path("data")
-TRAIN_PATH = DATA_DIR / "train.csv"
-TEST_PATH = DATA_DIR / "test.csv"
-ITEMS_PATH = DATA_DIR / "items.csv"
-STORES_PATH = DATA_DIR / "stores.csv"
-HOLIDAYS_PATH = DATA_DIR / "holidays_events.csv"
-TRANSACTIONS_PATH = DATA_DIR / "transactions.csv"
-PREPARED_DIR = DATA_DIR / "prepared"
+DATASET_DIR = Path("../dataset")
+TRAIN_PATH = DATASET_DIR / "train.csv"
+TEST_PATH = DATASET_DIR / "test.csv"
+ITEMS_PATH = DATASET_DIR / "items.csv"
+STORES_PATH = DATASET_DIR / "stores.csv"
+HOLIDAYS_PATH = DATASET_DIR / "holidays_events.csv"
+TRANSACTIONS_PATH = DATASET_DIR / "transactions.csv"
+PREPARED_DIR = DATASET_DIR / "prepared"
 PREPARED_TRAIN_PATTERN = PREPARED_DIR / "train_batch_*.parquet"
 PREPARED_TEST_PATTERN = PREPARED_DIR / "test_batch_*.parquet"
 PREPARED_META_PATH = PREPARED_DIR / "meta.json"
@@ -331,7 +331,7 @@ def process_batch(
 
 def main():
     os.chdir(Path(__file__).resolve().parent)
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    DATASET_DIR.mkdir(parents=True, exist_ok=True)
     PREPARED_DIR.mkdir(parents=True, exist_ok=True)
 
     holidays_events_df, stores_df, items_df, transactions_df = load_metadata()
