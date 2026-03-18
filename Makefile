@@ -1,4 +1,4 @@
-.PHONY: run-all download-dataset generate-features train-model run-model-on-test-data
+.PHONY: run-all download-dataset generate-features train-model run-model-on-test-data tensorboard-logs
 
 run-all: download-dataset generate-features train-model run-model-on-test-data
 
@@ -17,3 +17,6 @@ train-model:
 
 run-model-on-test-data:
 	uv run python src/train_model.py --mode=test
+
+tensorboard-logs:
+	uv run tensorboard --logdir tensorboard_logs
