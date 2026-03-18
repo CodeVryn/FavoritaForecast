@@ -24,7 +24,7 @@ FORECAST_TEST_PATH = DATASET_DIR / "forecast_CatBoost_v1_test.parquet"
 TEST_PATH = DATASET_DIR / "test.csv"
 DATE_FROM = "2017-01-01"
 SUBMISSION_PATH = DATASET_DIR / "submission_CatBoost_v1.csv"
-TRAIN_DIR = Path("tensorboard_logs")
+TRAIN_DIR = Path("../tensorboard_logs")
 
 HORIZON = 16
 RANDOM_SEED = 42
