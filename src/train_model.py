@@ -11,12 +11,13 @@ from catboost import CatBoostRegressor, Pool
 import polars as pl
 
 # --- Constants ---
-DATASET_DIR = Path("../dataset")
-RESULTS_DIR = Path("../results")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DATASET_DIR = PROJECT_ROOT / "dataset"
+RESULTS_DIR = PROJECT_ROOT / "results"
 PREPARED_DIR = DATASET_DIR / "prepared"
 PREPARED_TRAIN_PATTERN = PREPARED_DIR / "train_batch_*.parquet"
 PREPARED_TEST_PATTERN = PREPARED_DIR / "test_batch_*.parquet"
-MODEL_DIR = Path("../models")
+MODEL_DIR = PROJECT_ROOT / "models"
 EVAL_RESULTS_PATH = RESULTS_DIR / "results_catboost_eval_data.json"
 TEST_RESULTS_PATH = RESULTS_DIR / "results_catboost_test_data.json"
 FORECAST_EVAL_PATH = DATASET_DIR / "forecast_CatBoost_v1_eval.parquet"
@@ -24,7 +25,7 @@ FORECAST_TEST_PATH = DATASET_DIR / "forecast_CatBoost_v1_test.parquet"
 TEST_PATH = DATASET_DIR / "test.csv"
 DATE_FROM = "2017-01-01"
 SUBMISSION_PATH = DATASET_DIR / "submission_CatBoost_v1.csv"
-TRAIN_DIR = Path("../tensorboard_logs")
+TRAIN_DIR = PROJECT_ROOT / "tensorboard_logs"
 
 HORIZON = 16
 RANDOM_SEED = 42
