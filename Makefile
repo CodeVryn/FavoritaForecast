@@ -13,9 +13,11 @@ generate-features:
 	uv run python src/prepare_features.py
 
 train-model:
+	mkdir -p tensorboard_logs
 	uv run python src/train_model.py --mode=eval
 
 run-model-on-test-data:
+	mkdir -p tensorboard_logs
 	uv run python src/train_model.py --mode=test
 
 tensorboard-logs:
