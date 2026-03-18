@@ -22,7 +22,7 @@ TEST_RESULTS_PATH = RESULTS_DIR / "results_catboost_test_data.json"
 FORECAST_PATH = DATASET_DIR / "forecast_CatBoost_v1.parquet"
 TEST_PATH = DATASET_DIR / "test.csv"
 DATE_FROM = "2017-01-01"
-SUBMISSION_PATH = RESULTS_DIR / "submission_CatBoost_v1.csv"
+SUBMISSION_PATH = DATASET_DIR / "submission_CatBoost_v1.csv"
 TRAIN_DIR = Path("tensorboard_logs")
 
 HORIZON = 16
