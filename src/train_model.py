@@ -134,7 +134,6 @@ def run_eval():
 
     for i, params in enumerate(param_grid):
         print(f"\n--- Config {i + 1}/{len(param_grid)}: {params} ---")
-        config_string = "__".join(f"{k}_{v}" for k, v in params.items())
         model = CatBoostRegressor(
             loss_function="RMSE",
             eval_metric="RMSE",
@@ -148,7 +147,7 @@ def run_eval():
             grow_policy="Lossguide",
             bootstrap_type="Bernoulli",
             early_stopping_rounds=150,
-            train_dir=TRAIN_DIR / config_string,
+            train_dir=TRAIN_DIR / f"config_{i + 1}",
             verbose=200,
         )
         model.fit(
